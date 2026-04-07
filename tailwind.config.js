@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+        backgroundImage: {
+        'grid-pattern': "linear-gradient(var(--grid-color) 1px, transparent 1px), linear-gradient(90deg, var(--grid-color) 1px, transparent 1px)"
+      },
       colors: {
         background: '#f8fafc',
         foreground: '#111827',
