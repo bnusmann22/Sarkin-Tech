@@ -18,12 +18,7 @@ const Hero = () => {
     window.open('https://wa.me/9160152870', '_blank');
   };
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+
 
   return (
     <section

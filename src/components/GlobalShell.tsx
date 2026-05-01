@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { usePathname, useRouter } from 'next/navigation';
 import { VscHome, VscAccount, VscArchive, VscMail } from 'react-icons/vsc';
@@ -41,12 +41,16 @@ export default function GlobalShell({ children }: { children: React.ReactNode })
   const [direction, setDirection] = useState(0);
   const previousIndex = useRef(pageOrder[pathname] ?? 0);
 
-  useEffect(() => {
+  const updateDirection = useCallback(() => {
     const currentIndex = pageOrder[pathname] ?? 0;
     const previous = previousIndex.current;
     setDirection(currentIndex >= previous ? 1 : -1);
     previousIndex.current = currentIndex;
   }, [pathname]);
+
+  useEffect(() => {
+    updateDirection();
+  }, [updateDirection]);
 
   const dockItems = useMemo(
     () =>

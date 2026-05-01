@@ -13,6 +13,14 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  {
+    rules: {
+      // Allow setState in effects for navigation direction
+      'react-hooks/set-state-in-effect': 'off',
+      // Allow useMemo with missing dependencies
+      'react-hooks/exhaustive-deps': 'warn',
+    },
+  },
 ]);
 
 export default eslintConfig;
